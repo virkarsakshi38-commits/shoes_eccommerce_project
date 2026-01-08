@@ -1,0 +1,901 @@
+<h1>User Home</h1>
+
+<%- include("navbar.ejs") %>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pink Sole - Premium Footwear</title> -->
+  <!-- Bootstrap 5 CSS CDN -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- Bootstrap Icons CDN -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-pink: #ff2d75;
+      --light-pink: #ffebf1;
+      --dark-pink: #e6005c;
+      --white: #ffffff;
+      --light-gray: #f8f9fa;
+      --dark-gray: #343a40;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Navbar Styles */
+    .navbar-custom {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary-pink) !important;
+      font-size: 1.5rem;
+    }
+    
+    .nav-link {
+      color: var(--dark-gray) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      margin: 0 0.2rem;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-pink) !important;
+    }
+    
+    .btn-search {
+      background-color: var(--primary-pink);
+      color: var(--white);
+      border: none;
+    }
+    
+    .btn-search:hover {
+      background-color: var(--dark-pink);
+    }
+    
+    /* Hero Carousel */
+    .carousel-caption {
+      background-color: rgba(255, 45, 117, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      bottom: 30%;
+    }
+    
+    .carousel img {
+      height: 600px;
+      object-fit: cover;
+      filter: brightness(0.9);
+    }
+    
+    .carousel-control-prev, .carousel-control-next {
+      width: 5%;
+    }
+    
+    /* Section Headers */
+    .section-header {
+      position: relative;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    
+    .section-header h2 {
+      display: inline-block;
+      background-color: var(--white);
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+      font-weight: 700;
+      color: var(--dark-gray);
+    }
+    
+    .section-header::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--light-pink);
+      z-index: 0;
+    } -->
+    
+    <!-- /* Product Cards */
+    /* .product-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(255, 45, 117, 0.15);
+    }
+    
+    .product-img {
+      height: 200px;
+      object-fit: cover;
+      background-color: var(--light-pink);
+    }
+    
+    .product-card .card-body {
+      padding: 1.5rem;
+    }
+    
+    .product-card .card-title {
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    
+    .product-card .card-text {
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    
+    .btn-pink {
+      background-color: var(--primary-pink);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      font-weight: 500;
+      border-radius: 50px;
+    }
+    
+    .btn-pink:hover {
+      background-color: var(--dark-pink);
+      color: var(--white);
+    }
+    
+    /* Category Cards */
+    .category-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      height: 200px;
+    }
+    
+    .category-img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .category-card:hover .category-img {
+      transform: scale(1.05);
+    }
+    
+    .category-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 1.5rem;
+      color: var(--white);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--dark-gray);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer h5 {
+      color: var(--primary-pink);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links a {
+      color: #adb5bd;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.8rem;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-pink);
+    }
+    
+    .social-icon {
+      color: var(--white);
+      background-color: rgba(255,255,255,0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      transition: all 0.3s;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--primary-pink);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .carousel img {
+        height: 200px;
+      }
+      
+      .carousel-caption {
+        bottom: 20%;
+        padding: 15px;
+      }
+      
+      .product-img, .category-card {
+        height: 300px;
+      }
+    }
+  </style>
+
+  <style>
+        .trending-section {
+            padding: 60px 0;
+            background-color: #fff9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            display: inline-block;
+            background-color: #fff9fa;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ffebf1;
+            z-index: 0;
+        }
+        
+        .trending-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: white;
+        }
+        
+        .trending-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255, 45, 117, 0.15);
+        }
+        
+        .product-img {
+            height: 150%;
+            object-fit: cover;
+            background-color: #ffebf1;
+            width: 150%;
+        }
+        
+        .trending-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #ff2d75;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .product-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        } -->
+        
+        <!-- /* .trending-stats {
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 0.75rem;
+            color: #666;
+        }
+        
+        .product-price {
+            color: #ff2d75;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0.75rem 0;
+        }
+        
+        .btn-pink {
+            background-color: #ff2d75;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            border-radius: 50px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .btn-pink:hover {
+            background-color: #e6005c;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .product-img {
+                height: 100%;
+            }
+        }
+    </style> -->
+
+
+
+
+ <!-- <style>
+        :root {
+            --light-pink: #fff5f7;
+            --pink: #e83e8c;
+            --dark-pink: #d81b60;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .bg-light-pink {
+            background-color: var(--light-pink) !important;
+        }
+        
+        .text-pink {
+            color: var(--pink) !important;
+        }
+        
+        .btn-pink {
+            background-color: var(--pink);
+            border-color: var(--pink);
+            color: white;
+        }
+        
+        .btn-pink:hover {
+            background-color: var(--dark-pink);
+            border-color: var(--dark-pink);
+            color: white;
+        }
+        
+        .shop-by-style {
+            padding: 60px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--pink);
+        }
+        
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-img {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .style-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--pink);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .card-text {
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        
+        .fw-bold {
+            font-weight: 700 !important;
+        }
+    </style>
+    
+</head>
+<body> */ */ -->
+  <!-- Navigation Bar -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-emoji-sunglasses me-2"></i>Pink Sole
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Women</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Men</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Kids</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Sale</a></li>
+        </ul>
+        
+        <form class="d-flex me-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search shoes...">
+          <button class="btn btn-search" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        
+        <ul class="navbar-nav">
+          <li class="nav-item me-3">
+            <a class="nav-link" href="#"><i class="bi bi-heart fs-5"></i></a>
+          </li>
+          <li class="nav-item me-3">
+            <a class="nav-link" href="#"><i class="bi bi-cart3 fs-5"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-person-circle fs-5"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+
+  <!-- Hero Carousel -->
+  <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+         <% for(var i=0;i<sliders.length;i++){ %>
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="<%-i%>" class="<%= (i==0) ? 'active':'' %>"></button>
+       <% } %>
+      <!-- <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button> -->
+    </div>
+
+
+    
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+       <% for(var i=0;i<sliders.length;i++){ %>
+      <div class="carousel-item <%= (i==0) ? 'active':'' %>">
+        <img src="<%-sliders[i].slider_image%>" class="d-block w-100" alt="Sneaker Collection">
+        <div class="carousel-caption d-none d-md-block">
+          <h3><%-sliders[i].slider_description%></h3>
+          <p>Discover our latest designs in vibrant colors</p>
+          <a href="<%-sliders[i].slider_button_link%>" class="btn btn-light btn-pink"><%-sliders[i].slider_button_text%></a>
+        </div>
+      </div>
+    <% } %>
+
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+
+
+
+ <!-- Trending Products Section -->
+    <section class="trending-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>🔥 Trending Now</h2>
+            </div>
+            
+            <div class="row">
+                <!-- Product 1 -->
+
+         <% for(var i=0;i<trending_products.length;i++){ %>
+                <div class="col-lg-3 col-md-6">
+                    <div class="trending-card">
+                        <span class="trending-badge">HOT</span>
+
+                        <a href="/product_details/<%-trending_products[i].product_id%>">
+                          
+                        <img src="/products/<%-trending_products[i].product_main_image%>" class="product-img" alt="Cloudfoam Sneakers">
+                        <div class="card-body">
+                            <h5 class="product-title"><%-trending_products[i].product_name%></h5>
+                            <div class="trending-stats">
+                                <span><i class="bi bi-lightning-charge-fill text-pink"></i> 2.5k+ sold</span>
+                                <span><i class="bi bi-star-fill text-warning"></i> 4.8</span>
+                            </div>
+                            <p class="product-price">&#8377; <%-trending_products[i].product_price%></p>
+                            <button class="btn-pink">Buy Now</button>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <% } %>
+
+
+
+
+
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+  
+
+  <!-- Categories Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>Shop by Category</h2>
+      </div>
+      
+
+      <div class="row">
+
+         <% for(var i=0;i<product_types.length;i++){ %>
+        <div class="col-md-4">
+          <div class="category-card">
+            <img src="/types/<%-product_types[i].product_type_image%>" class="category-img" alt="Sneakers">
+            <div class="category-overlay">
+              <h3>Sneakers</h3>
+              <a href="#" class="btn btn-pink btn-sm">Shop Now</a>
+            </div>
+          </div>
+        </div>
+         <% } %>
+  </section>
+
+
+
+
+
+
+<!-- Shop by Style Section -->
+<section class="shop-by-style py-5 bg-light-pink">
+  <div class="container">
+    <div class="section-header">
+      <h2>Shop by Style</h2>
+      <p class="text-muted">Discover your perfect look with our curated style collections</p>
+    </div>
+    <div class="row">
+      <% for(var i=0; i < product_styles.length; i++) { %>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="product-card">
+            <div class="position-relative">
+              <span class="style-tag">Casual</span>
+              <img src="/styles/<%= product_styles[i].product_style_image %>" 
+                   class="card-img-top product-img" 
+                   alt="<%= product_styles[i].product_style_name %>">
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title"><%= product_styles[i].product_style_name %></h5>
+              <p class="card-text">Perfect for everyday wear with maximum comfort</p>
+              <p class="text-pink fw-bold">$49.99</p>
+              <a href="#" class="btn btn-pink">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  
+
+
+  <!-- Featured Products -->
+  <section class="py-5 bg-light-pink">
+    <div class="container">
+      <div class="section-header">
+        <h2>High Discount Products</h2>
+      </div>
+      
+      <div class="row">
+        <!-- Product 1 -->
+          <% for(var i=0;i<high_discount_products.length;i++){ %>
+        <div class="col-lg-3 col-md-6">
+          <div class="product-card">
+            <img src="/products/<%-high_discount_products[i].product_main_image%>" class="card-img-top product-img" alt="Air Max 270">
+            <div class="card-body text-center">
+              <h5 class="card-title"><%-high_discount_products[i].product_name%></h5>
+              <p class="card-text">Revolutionary cushioning for all-day comfort</p>
+              <p class="text-pink fw-bold"> <%-high_discount_products[i].product_price%></p>
+              <a href="#" class="btn btn-pink">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+        
+
+
+
+
+        <!-- Product 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top product-img" alt="Classic White">
+            <div class="card-body text-center">
+              <h5 class="card-title">Classic White</h5>
+              <p class="card-text">Timeless design meets modern comfort</p>
+              <p class="text-pink fw-bold">$89.99</p>
+              <a href="#" class="btn btn-pink">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        
+      
+        
+        
+
+  <!-- Kids Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>Kids Collection</h2>
+      </div>
+      
+      <div class="row">
+        <!-- Girls -->
+        <div class="col-md-6 mb-4">
+          <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1605348530920-78bc34912496?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="category-img" alt="Girls Shoes">
+            <div class="category-overlay">
+              <h3>Girls' Collection</h3>
+              <a href="#" class="btn btn-pink btn-sm">Shop Now</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Boys -->
+        <div class="col-md-6 mb-4">
+          <div class="category-card">
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="category-img" alt="Boys Shoes">
+            <div class="category-overlay">
+              <h3>Boys' Collection</h3>
+              <a href="#" class="btn btn-pink btn-sm">Shop Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <!-- Product 1 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top product-img" alt="Kids Runner">
+            <div class="card-body text-center">
+              <h5 class="card-title">Kids Runner</h5>
+              <p class="card-text">Perfect for active little feet</p>
+              <p class="text-pink fw-bold">$59.99</p>
+              <a href="#" class="btn btn-pink">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top product-img" alt="Light-Up Shoes">
+            <div class="card-body text-center">
+              <h5 class="card-title">Light-Up Shoes</h5>
+              <p class="card-text">Fun and functional</p>
+              <p class="text-pink fw-bold">$49.99</p>
+              <a href="#" class="btn btn-pink">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top product-img" alt="School Shoes">
+            <div class="card-body text-center">
+              <h5 class="card-title">School Shoes</h5>
+              <p class="card-text">Durable for everyday wear</p>
+              <p class="text-pink fw-bold">$39.99</p>
+              <a href="#" class="btn btn-pink">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="col-lg-3 col-md-6">
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top product-img" alt="Sandals">
+            <div class="card-body text-center">
+              <h5 class="card-title">Summer Sandals</h5>
+              <p class="card-text">Cool and comfortable</p>
+              <p class="text-pink fw-bold">$34.99</p>
+              <a href="#" class="btn btn-pink">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-5 bg-primary-pink text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h3 class="mb-3">Join Our Newsletter</h3>
+          <p class="mb-0">Subscribe to get 15% off your first order and updates on new releases</p>
+        </div>
+        <div class="col-md-6">
+          <form class="row g-2">
+            <div class="col-8">
+              <input type="email" class="form-control" placeholder="Your email address">
+            </div>
+            <div class="col-4">
+              <button type="submit" class="btn btn-dark w-100">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5>Pink Sole</h5>
+          <p>Your destination for premium footwear. We offer the latest styles with unmatched comfort and quality.</p>
+          <div class="mt-4">
+            <a href="#" class="social-icon me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon me-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-icon me-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-pinterest"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5>Shop</h5>
+          <div class="footer-links">
+            <a href="#">Women's Shoes</a>
+            <a href="#">Men's Shoes</a>
+            <a href="#">Kids' Shoes</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Best Sellers</a>
+            <a href="#">Sale</a>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5>Customer Service</h5>
+          <div class="footer-links">
+            <a href="#">Contact Us</a>
+            <a href="#">FAQs</a>
+            <a href="#">Shipping & Returns</a>
+            <a href="#">Order Tracking</a>
+            <a href="#">Size Guide</a>
+            <a href="#">Payment Methods</a>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h5>About Us</h5>
+          <div class="footer-links">
+            <a href="#">Our Story</a>
+            <a href="#">Sustainability</a>
+            <a href="#">Careers</a>
+            <a href="#">Store Locator</a>
+            <a href="#">Blog</a>
+            <a href="#">Press</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-md-0">© 2025 Pink Sole. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <a href="#" class="text-white me-3">Privacy Policy</a>
+            <a href="#" class="text-white me-3">Terms of Service</a>
+            <a href="#" class="text-white">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

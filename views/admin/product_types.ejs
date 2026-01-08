@@ -1,0 +1,94 @@
+<%- include("navbar.ejs") %>
+
+<div class="container mt-4">
+    <!-- Add New type Card -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="fas fa-plus-circle mr-2"></i>Add New type</h3>
+        </div>
+        <div class="card-body">
+            <form action="/admin/save_product_type" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="typeName">type Name</label>
+                        <input type="text" class="form-control" id="typeName" name="product_type_name" placeholder="Enter type name" required><br>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="typeImage">type Image</label><br>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="typeImage" name="product_type_image" required>
+                            <label class="custom-file-label" for="typeImage">Choose image file...</label><br><br>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save mr-2"></i>Save type
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Existing types Card -->
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h3 class="mb-0"><i class="fas fa-list-alt mr-2"></i>Existing types</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th width="5%">#</th>
+                            <th width="25%">type Name</th>
+                            <th width="50%">type Image</th>
+                            <th width="20%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(types.length === 0) { %>
+                            <tr>
+                                <td colspan="4" class="text-center py-4 text-muted">No types found. Add your first type above.</td>
+                            </tr>
+                        <% } %>
+                        <% for(let i=0; i < types.length; i++) { %>
+                            <tr>
+                                <td><%= i+1 %></td>
+                                <td><%= types[i].product_type_name %></td>
+                                <td>
+                                    <img src="/types/<%= types[i].product_type_image %>" class="img-thumbnail" type="max-width: 150px;" alt="<%= types[i].product_type_name %>">
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                       
+                                        
+                                       
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>
+
+<!-- JavaScript for enhanced functionality -->
+<script>
+// Enable Bootstrap tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+// Update file input label
+document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+    var fileName = e.target.files[0].name;
+    var label = e.target.nextElementSibling;
+    label.innerText = fileName;
+});
+
+// Confirm before delete (already implemented in the delete button)
+</script>

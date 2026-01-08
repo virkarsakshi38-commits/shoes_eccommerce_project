@@ -1,0 +1,25 @@
+<%- include("navbar.ejs") %>
+
+<h1>Add New Slider</h1>
+<form action="/admin/save_slider" method="post" enctype="multipart/form-data">
+    Enter Slider Tittle
+    <input type="text" name="slider_title"><br><br>
+
+     Upload Slider Image
+    <input type="file" name="slider_image"><br><br>
+
+    Enter Button Text 
+    <input type="text" name="slider_button_text"><br><br>
+
+     Enter Button Link 
+    <input type="url" name="slider_button_link"><br><br>
+
+
+    Enter Slider description
+    <textarea name="slider_description" class="form-control" id="editor"></textarea><br><br>
+
+    <button>Save Slider</button>
+</form>
+
+
+<%- include("footer.ejs") %>

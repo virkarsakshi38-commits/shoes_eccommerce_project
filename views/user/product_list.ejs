@@ -1,0 +1,36 @@
+<%- include("navbar.ejs") %>
+<br><br>
+
+
+
+        <div class="row">
+                 Product 1 -->
+
+          <% for(var i=0;i<trending_products.length;i++){ %>
+                <div class="col-lg-3 col-md-6">
+                    <div class="trending-card">
+                        <span class="trending-badge">HOT</span>
+
+                        <a href="/product_details/<%-trending_products[i].product_id%>">
+                          
+                        <img src="/products/<%-trending_products[i].product_main_image%>" class="product-img" alt="Cloudfoam Sneakers">
+                        <div class="card-body">
+                            <h5 class="product-title"><%-trending_products[i].product_name%></h5>
+                            <div class="trending-stats">
+                                <span><i class="bi bi-lightning-charge-fill text-pink"></i> 2.5k+ sold</span>
+                                <span><i class="bi bi-star-fill text-warning"></i> 4.8</span>
+                            </div>
+                            <p class="product-price">&#8377; <%-trending_products[i].product_price%></p>
+                            <button class="btn-pink">Buy Now</button>
+                        </div>
+                    </div>
+                    </a>
+                </div> 
+                 <% } %> 
+
+
+
+
+
+<br><br>
+<%- include("footer.ejs") %>

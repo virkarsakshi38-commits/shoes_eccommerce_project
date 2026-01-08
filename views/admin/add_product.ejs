@@ -1,0 +1,141 @@
+
+
+<%- include('navbar.ejs')%>
+<form action="/admin/save_product" method="post" enctype="multipart/form-data">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Add Product</h1>
+        </div>
+
+        <div class="col-md-4 mb-3">
+             Product Name
+            <input type="text" name="product_name" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3">
+             Product Market Price
+            <input type="number" name="product_market_price" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            product price
+            <input type="text" name="product_price" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3">
+            product main image
+            <input type="file" name="product_main_image" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3">
+          product  is trending
+            <select name="product_is_trending" class="form-control">
+                <option> NO</option>
+                <option>Yes</option>
+            </select> 
+        </div>
+        
+
+        <div class="col-md-4 mb-3">
+          product style 
+            <select name="product_style_id" class="form-control">
+                <% for(var i=0; i<styles.length;i++) { %>
+    
+          <option value="<%-styles[i].product_style_id%>"><%-styles[i].product_style_name%></option>
+            <% } %>
+            </select> 
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+          product brand 
+            <select name="product_brand_id" class="form-control">
+                <% for(var i=0; i<brands.length;i++) { %>
+    
+          <option value="<%-brands[i].product_brand_id%>"><%-brands[i].product_brand_name%></option>
+            <% } %>
+            </select>
+        </div>
+
+
+
+        <div class="col-md-4 mb-3">
+          product for
+            <select name="product_for" id="product_for" class="form-control" onchange="showHideKidType()">
+                <option> Male</option>
+                <option>Female</option>
+                <option>Kids</option>
+            </select> 
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+         product kid type
+            <select name="product_kid_type" id="product_kid_type" class="form-control" disabled>
+                <option></option>
+                <option> Both</option>
+                <option>Girls</option>
+                <option>Boys</option>
+            </select> 
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+         product Type 
+            <select name="product_type_id" class="form-control">
+            <option></option>
+            <% for(var i=0; i<types.length;i++) { %>   
+          <option value="<%-types[i].product_type_id%>"><%-types[i].product_type_name%></option>
+            <% } %>
+            </select> 
+        </div>
+
+
+        <div class="col-md-4 mb-3">
+         Product Stock
+            <input type="number" name="product_stock" class="form-control">
+        </div>
+
+
+
+        <div class="col-md-4 mb-3">
+         Product Color
+            <input type="text" name="product_color" class="form-control">
+        </div>
+
+
+
+        <div class="col-md-12 mb-3">
+            Product Description
+            <textarea name="product_description" class="form-control" id="editor">
+
+            </textarea>
+        </div>
+
+
+        <div class="col-md-12 text-center">
+         <button class="btn btn-warning">Save Product</button>
+        </div>
+        
+    </div>
+</div>
+</form>
+
+<script>
+    function showHideKidType()
+    {
+        var sel = document.getElementById("product_for").value;
+        if(sel == 'Kids')
+    {  
+         document.getElementById("product_kid_type").removeAttribute("disabled")
+    }
+         document.getElementById("product_kid_type").setAttribute("disabled","true")
+       
+    }
+</script>
+<%- include('footer.ejs')%>
+
+
+
+

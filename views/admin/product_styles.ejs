@@ -1,0 +1,94 @@
+<%- include("navbar.ejs") %>
+
+<div class="container mt-4">
+    <!-- Add New Style Card -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="fas fa-plus-circle mr-2"></i>Add New Style</h3>
+        </div>
+        <div class="card-body">
+            <form action="/admin/save_product_style" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="styleName">Style Name</label>
+                        <input type="text" class="form-control" id="styleName" name="product_style_name" placeholder="Enter style name" required><br>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="styleImage">Style Image</label><br>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="styleImage" name="product_style_image" required>
+                            <label class="custom-file-label" for="styleImage">Choose image file...</label><br><br>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save mr-2"></i>Save Style
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Existing Styles Card -->
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h3 class="mb-0"><i class="fas fa-list-alt mr-2"></i>Existing Styles</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th width="5%">#</th>
+                            <th width="25%">Style Name</th>
+                            <th width="50%">Style Image</th>
+                            <th width="20%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(styles.length === 0) { %>
+                            <tr>
+                                <td colspan="4" class="text-center py-4 text-muted">No styles found. Add your first style above.</td>
+                            </tr>
+                        <% } %>
+                        <% for(let i=0; i < styles.length; i++) { %>
+                            <tr>
+                                <td><%= i+1 %></td>
+                                <td><%= styles[i].product_style_name %></td>
+                                <td>
+                                    <img src="/styles/<%= styles[i].product_style_image %>" class="img-thumbnail" style="max-width: 150px;" alt="<%= styles[i].product_style_name %>">
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                       
+                                        
+                                       
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("footer.ejs") %>
+
+<!-- JavaScript for enhanced functionality -->
+<script>
+// Enable Bootstrap tooltips
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+// Update file input label
+document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+    var fileName = e.target.files[0].name;
+    var label = e.target.nextElementSibling;
+    label.innerText = fileName;
+});
+
+// Confirm before delete (already implemented in the delete button)
+</script>

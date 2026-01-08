@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+<!-- <button id="rzp-button">Pay</button> -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        "key": "rzp_test_GmXyAFAK01Uo7t",
+        "amount": "<%-order_info[0].total_amount*100 %>",
+        "currency": "INR",
+        "name": "PINK SOLE",
+        "description": "Shoes Order",
+        "image": "https://a2zithub.org/uploads/173114251034582044.png",
+        "callback_url": "http://localhost:1000/payment_success/<%-order_info[0].order_id %>",
+        "prefill": {
+            "name": "<%-order_info[0].fullname %>",
+            // "email": "<email>",
+            "contact": "<%-order_info[0].mobile %>"
+        },
+        "notes": {
+          "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+
+    };
+
+    var rzpl = new Razorpay(options);
+    rzpl.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+        
+    });
+    // document.getElementById('rzp-button').onclick = function(e){
+        // rzpl.open();
+        // e.preventDefault();
+    // }
+
+        rzpl.open();
+
+    
+</script>

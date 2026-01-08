@@ -1,0 +1,242 @@
+<%- include("navbar.ejs") %>
+<br><br>
+<div class="container">
+    <div class="row justify-content-centre align-items-center">
+        <div class="col-md-4">
+             <img src="/products/<%-info[0].product_main_image%>"
+             width="100%">
+        </div>
+ <div class="col-md-4">
+<h3><%-info[0].product_name%></h3>
+<h3>&#8377 <%-info[0].product_price%>/-</h3>
+<br>
+
+<div class="row">
+  <div class="col-6">
+<select name="size" id="size" class="form-control">
+  <% if(info[0].product_for == 'Male') { %>
+  <option>Mens: 7</option>
+  <option>Mens: 8</option>
+  <option>Mens: 9</option>
+  <option>Mens: 10</option>
+<% }%>
+
+<% if(info[0].product_for == 'Female') { %>
+  <option>Womens: 5</option>
+  <option>Womens: 6</option>
+  <option>Womens: 7</option>
+  <option>Womens: 8</option>
+  <option>Womens: 9</option>
+  <option>Womens: 10</option>
+<% }%>
+
+
+<% if(info[0].product_for == 'Kids') { %>
+  <option>Kids: 1</option>
+  <option>Kids: 2</option>
+  <option>Kids: 3</option>
+  <option>Kids: 4</option>
+  <% }%>
+  
+</select>
+  </div>
+ <div class="col-6">
+  <button class="btn btn-dark">-</button>
+  <input type="text" id="quantity"  class="form-control d-inline-block w-25 text-centre" value="1">
+  <button class="btn btn-dark" onclick="increament_qty()">+</button>
+ </div>
+
+</div>
+
+<br>
+<% if(is_login){%>
+
+<button class="btn btn-dark" onclick="redirect_to_buy_now()">Buy Now</button>
+<% } else { %>
+<button class="btn btn-dark"
+data-bs-toggle="modal"
+data-bs-target="#getUserEmailModel">Buy Now</button>
+
+<% } %>
+<!-- <a href="/add_to_cart/<%-info[0].product_id%>"> -->
+<button onclick="redirect_to_add_to_cart()" class="btn btn-primary">Add To Cart</button>
+</a>
+
+
+
+
+
+<!-- Modal 1 -->
+
+<div class="modal fade" id="getUserEmailModel" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form action="/send_otp_mail" method="post" onsubmit="sendOTP(event)">
+          <h3 class="mb-3">Enter Your Email</h3>
+          <input type="email" name="email" id="email" class="form-control">
+          <br>
+          <button type="submit" class="btn btn-pink w-100">Next</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal 2-->
+
+<div class="modal" id="getUserOtpModel" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form action="/verify_otp" method="post" onsubmit="verifyOTP(event)">
+          <h3>Enter OTP</h3>
+          <input type="number" name="otp" id="otp" class="form-control" required>
+          <button type="submit" class="btn btn-success mt-2">Verify</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<script>
+    
+function sendOTP(event) {
+    event.preventDefault();
+    var mail = document.getElementById("email").value;
+    console.log(mail);
+
+    $.ajax({
+        url: "/send_otp_mail",
+        type: "post",
+        data: { "email": mail }
+    }).done(function(res) {
+        console.log(res);
+
+        // Hide Email Modal
+        var emailModalEl = document.getElementById('getUserEmailModel');
+        var emailModal = bootstrap.Modal.getInstance(emailModalEl);
+        if (emailModal) {
+            emailModal.hide();
+        }
+
+        // Wait till first modal completely hides, then show OTP modal
+        emailModalEl.addEventListener('hidden.bs.modal', function () {
+            var otpModal = new bootstrap.Modal(document.getElementById('getUserOtpModel'));
+            otpModal.show();
+        }, { once: true });
+    });
+}
+
+
+
+function verifyOTP(event)
+{
+  event.preventDefault();
+  var otp = document.getElementById("otp").value;
+  console.log(otp);
+
+  $.ajax({
+    url:"/verify_otp",
+    type:"post",
+    data:{"otp":otp}
+  }).done(function(res){
+
+console.log(res);
+if(res.status == 'false')
+{
+  document.getElementById("otp").style.border = '2px solid red'
+}
+else
+{
+  redirect_to_buy_now();
+  
+  //  location.href = `/buy_now/<%-info[0].product_id%>`;
+}
+
+  });
+}
+
+
+
+function increament_qty()
+{
+var qty = document.getElementById('quantity').value
+document.getElementById('quantity').value = Number(qty)+1;
+}
+
+
+
+function redirect_to_buy_now()
+{
+   
+var qty = document.getElementById('quantity').value;
+var size = document.getElementById('size').value;
+
+// console.log(product_id, qty,size);
+
+var url = `/buy_now/<%-info[0].product_id%>?qty=${qty}&size=${size}`;
+
+// console.log(url);
+location.href = url;
+}
+
+function redirect_to_add_to_cart()
+{
+
+
+  var qty = document.getElementById('quantity').value;
+var size = document.getElementById('size').value;
+
+
+// console.log(product_id, qty,size);
+
+var url = `/add_to_cart/<%-info[0].product_id%>?qty=${qty}&size=${size}`;
+// console.log(url);
+location.href = url;
+
+}
+
+
+</script>
+
+
+
+
+<!-- Custom Pink Button -->
+<style>
+  .btn-pink {
+    background-color: #e75480; /* Soft pink */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    transition: 0.3s;
+  }
+  .btn-pink:hover {
+    background-color: #d4416d;
+    color: #fff;
+  }
+</style>
+ </div>
+ </div>
+</div>
+
+
+ 
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+<br><br>
+<%- include("footer.ejs") %>
