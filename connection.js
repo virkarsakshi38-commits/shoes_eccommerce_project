@@ -3,10 +3,10 @@ var util = require('util');
 
 
 var connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:"",
-    database:'a2z_shoes_ecom'
+    host:'bcobmqq6c4gq7cnwks6o-mysql.services.clever-cloud.com',
+    user:'utyxhrnt73swuvwg',
+    password:"utyxhrnt73swuvwg",
+    database:'bcobmqq6c4gq7cnwks6o'
 });
 
 var exe = util.promisify(connection.query).bind(connection);
